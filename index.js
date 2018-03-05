@@ -1,5 +1,8 @@
-var express = require("express");
-var app = express();
+var express = require('express')
+var cors = require('cors')
+var app = express()
+
+app.use(cors());
 
 app.get('/menu-items', function(request, response) {
     var menu = [
@@ -40,6 +43,42 @@ app.get('/menu-items', function(request, response) {
         }
     ];
     response.send(menu);
+});
+
+app.get('/rooms', function(request, response) {
+    var rooms = [
+        {
+            name: "Falcon Room",
+            bed: "Single",
+            floor: 1,
+            image: "/images/room-falcon.jpg"
+        },
+        {
+            name: "Penguin Room",
+            bed: "Double",
+            floor: 0,
+            image: "/images/room-penguin.jpg"
+        },
+        {
+            name: "Eagle Room",
+            bed: "Single",
+            floor: 1,
+            image: "/images/room-eagle.jpg"
+        },
+        {
+            name: "Puffin Room",
+            bed: "Twin",
+            floor: 2,
+            image: "/images/room-puffin.jpg"
+        },
+        {
+            name: "Blue Crane Room",
+            bed: "Double",
+            floor: 2,
+            image: "/images/room-bluecrane.jpg"
+        }
+    ];
+    response.send(rooms);
 });
 
 app.listen(8000, function() {
